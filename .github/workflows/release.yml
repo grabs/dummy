@@ -54,7 +54,7 @@ jobs:
       matrix:
         php: ['7.4', '8.0']
         database: ['mariadb', 'pgsql']
-        node: '16.16'
+        node: ['16.16']
 
     steps:
       - name: Check out repository code
