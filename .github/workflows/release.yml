@@ -42,15 +42,19 @@ jobs:
           --health-retries 3
     strategy:
       fail-fast: false
+      #~ matrix:
+        #~ include:
+          #~ # Moodle 4.0
+          #~ - php: '7.4'
+            #~ database: 'mariadb'
+            #~ node: '16.16'
+          #~ - php: '7.4'
+            #~ database: 'pgsql'
+            #~ node: '16.16'
       matrix:
-        include:
-          # Moodle 4.0
-          - php: '7.4'
-            database: 'mariadb'
-            node: '16.16'
-          - php: '7.4'
-            database: 'pgsql'
-            node: '16.16'
+        php: ['7.4', '8.0']
+        database: ['mariadb', 'pgsql']
+        node: '16.16'
 
     steps:
       - name: Check out repository code
