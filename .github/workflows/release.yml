@@ -42,14 +42,14 @@ jobs:
           # Moodle 4.0
           - php: '7.4'
             moodle-branch: 'MOODLE_400_STABLE'
-            mod-collabora-repo: {{ GITHUB_REPOSITORY_OWNER }}/moodle-mod_collabora
-            mod-collabora-branch: {{ GITHUB_REF_NAME }}
+            mod-collabora-repo: ${{ GITHUB_REPOSITORY_OWNER }}/moodle-mod_collabora
+            mod-collabora-branch: ${{ GITHUB_REF_NAME }}
             database: 'mariadb'
             node: '16.16'
           - php: '7.4'
             moodle-branch: 'MOODLE_400_STABLE'
-            mod-collabora-repo: {{ GITHUB_REPOSITORY_OWNER }}/moodle-mod_collabora
-            mod-collabora-branch: {{ GITHUB_REF_NAME }}
+            mod-collabora-repo: ${{ GITHUB_REPOSITORY_OWNER }}/moodle-mod_collabora
+            mod-collabora-branch: ${{ GITHUB_REF_NAME }}
             database: 'pgsql'
             node: '16.16'
 
