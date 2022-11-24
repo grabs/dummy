@@ -89,41 +89,51 @@ jobs:
           DB: ${{ matrix.database }}
           MOODLE_BRANCH: ${{ matrix.moodlebranch }}
 
-      #~ - name: Run phplint
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci phplint
+      - name: Run phplint
+        if: ${{ always() }}
+        run: moodle-plugin-ci phplint
 
-      #~ - name: Run codechecker
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci codechecker
+      - name: Run codechecker
+        if: ${{ always() }}
+        run: moodle-plugin-ci codechecker
 
-      #~ - name: Run validate
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci validate
+      - name: Run validate
+        if: ${{ always() }}
+        run: moodle-plugin-ci validate
 
-      #~ - name: Run savepoints
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci savepoints
+      - name: Run savepoints
+        if: ${{ always() }}
+        run: moodle-plugin-ci savepoints
 
-      #~ - name: Run mustache
-        #~ continue-on-error: true # This step will show errors but will not fail
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci mustache
+      - name: Run mustache
+        continue-on-error: true # This step will show errors but will not fail
+        if: ${{ always() }}
+        run: moodle-plugin-ci mustache
 
-      #~ - name: Run phpunit
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci phpunit
+      - name: Run grunt
+        continue-on-error: true # This step will show errors but will not fail
+        if: ${{ always() }}
+        run: moodle-plugin-ci grunt
 
-      #~ - name: Run behat
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci behat --profile chrome
+      - name: Run phpdoc
+        continue-on-error: true # This step will show errors but will not fail
+        if: ${{ always() }}
+        run: moodle-plugin-ci phpdoc
 
-      #~ - name: PHP Copy/Paste Detector
-        #~ continue-on-error: true # This step will show errors but will not fail
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci phpcpd
+      - name: Run phpunit
+        if: ${{ always() }}
+        run: moodle-plugin-ci phpunit
 
-      #~ - name: PHP Mess Detector
-        #~ continue-on-error: true # This step will show errors but will not fail
-        #~ if: ${{ always() }}
-        #~ run: moodle-plugin-ci phpmd
+      - name: Run behat
+        if: ${{ always() }}
+        run: moodle-plugin-ci behat --profile chrome
+
+      - name: PHP Copy/Paste Detector
+        continue-on-error: true # This step will show errors but will not fail
+        if: ${{ always() }}
+        run: moodle-plugin-ci phpcpd
+
+      - name: PHP Mess Detector
+        continue-on-error: true # This step will show errors but will not fail
+        if: ${{ always() }}
+        run: moodle-plugin-ci phpmd
