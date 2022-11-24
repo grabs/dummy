@@ -43,11 +43,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.4', '8.0']
-        database: ['mariadb', 'pgsql']
-        moodlebranch: ['MOODLE_400_STABLE', 'master']
+        #~ php: ['7.4', '8.0']
+        #~ database: ['mariadb', 'pgsql']
+        #~ moodlebranch: ['MOODLE_400_STABLE', 'master']
+        php: ['8.0']
+        database: ['mariadb']
+        moodlebranch: ['MOODLE_400_STABLE']
         include:
-          - node: 16.16
+          - node: 16
 
     steps:
       - name: Check out repository code
