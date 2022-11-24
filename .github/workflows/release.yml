@@ -5,7 +5,7 @@ on: [push, pull_request]
 env:
   MOD_COLLABORA_REPO: $GITHUB_REPOSITORY_OWNER/moodle-mod_collabora
   MOD_COLLABORA_BRANCH: $GITHUB_REF_NAME
-  MDL_BRANCHES: ${{ ['MOODLE_400_STABLE'] }}
+  MDL_BRANCHES: '["MOODLE_400_STABLE", "master"]'
 
 jobs:
   citest:
@@ -57,7 +57,7 @@ jobs:
         #~ php: ['7.4', '8.0']
         #~ database: ['mariadb', 'pgsql']
         node: ['16.16']
-        moodlebranch: $MDL_BRANCHES
+        moodlebranch: ${{ fromJSON($MDL_BRANCHES) }}
 
     steps:
       - name: Check out repository code
