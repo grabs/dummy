@@ -5,7 +5,7 @@ on: [push, pull_request]
 env:
   MOD_COLLABORA_REPO: $GITHUB_REPOSITORY_OWNER/moodle-mod_collabora
   MOD_COLLABORA_BRANCH: $GITHUB_REF_NAME
-  MOODLE_BRANCH: MOODLE_400_STABLE
+  MDL_BRANCHES: ['MOODLE_400_STABLE']
 
 jobs:
   citest:
@@ -52,9 +52,12 @@ jobs:
             #~ database: 'pgsql'
             #~ node: '16.16'
       matrix:
-        php: ['7.4', '8.0']
-        database: ['mariadb', 'pgsql']
+        php: ['8.0']
+        database: ['mariadb']
+        #~ php: ['7.4', '8.0']
+        #~ database: ['mariadb', 'pgsql']
         node: ['16.16']
+        moodlebranch: $MDL_BRANCHES
 
     steps:
       - name: Check out repository code
@@ -91,6 +94,7 @@ jobs:
         run:  moodle-plugin-ci install -vvv --plugin ./plugin --db-host=127.0.0.1
         env:
           DB: ${{ matrix.database }}
+          MOODLE_BRANCH: ${{ matrix.moodlebranch }}
 
       #~ - name: Run phplint
         #~ if: ${{ always() }}
