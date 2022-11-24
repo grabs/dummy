@@ -6,8 +6,6 @@ env:
   MOD_COLLABORA_REPO: $GITHUB_REPOSITORY_OWNER/moodle-mod_collabora
   MOD_COLLABORA_BRANCH: $GITHUB_REF_NAME
 
-MDL_BRANCHES: "[\"MOODLE_400_STABLE\", \"master\"]"
-
 jobs:
   citest:
     name: CI test
@@ -57,8 +55,9 @@ jobs:
         database: ['mariadb']
         #~ php: ['7.4', '8.0']
         #~ database: ['mariadb', 'pgsql']
-        node: ['16.16']
-        moodlebranch: ${{ fromJSON($MDL_BRANCHES) }}
+        moodlebranch: ['MOODLE_400_STABLE', 'master']
+        include:
+          - node: 16.16
 
     steps:
       - name: Check out repository code
