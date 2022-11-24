@@ -5,7 +5,8 @@ on: [push, pull_request]
 env:
   MOD_COLLABORA_REPO: $GITHUB_REPOSITORY_OWNER/moodle-mod_collabora
   MOD_COLLABORA_BRANCH: $GITHUB_REF_NAME
-  MDL_BRANCHES: ['MOODLE_400_STABLE']
+  MDL_BRANCHES:
+    - MOODLE_400_STABLE
 
 jobs:
   citest:
