@@ -50,16 +50,16 @@ jobs:
         database: ['mariadb']
         moodlebranch: ['MOODLE_400_STABLE']
         include:
-          - node: 16
+          - node: 16.16
 
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           path: plugin
 
       - name: Install node  ${{ matrix.node }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
