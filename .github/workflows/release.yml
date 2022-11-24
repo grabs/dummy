@@ -3,6 +3,7 @@ name: release branch test
 on: [push, pull_request]
 
 env:
+  # Additional mod_collabora plugin as requirement.
   MOD_COLLABORA_REPO: $GITHUB_REPOSITORY_OWNER/moodle-mod_collabora
   MOD_COLLABORA_BRANCH: $GITHUB_REF_NAME
 
@@ -41,20 +42,9 @@ jobs:
           --health-retries 3
     strategy:
       fail-fast: false
-      #~ matrix:
-        #~ include:
-          #~ # Moodle 4.0
-          #~ - php: '7.4'
-            #~ database: 'mariadb'
-            #~ node: '16.16'
-          #~ - php: '7.4'
-            #~ database: 'pgsql'
-            #~ node: '16.16'
       matrix:
-        php: ['8.0']
-        database: ['mariadb']
-        #~ php: ['7.4', '8.0']
-        #~ database: ['mariadb', 'pgsql']
+        php: ['7.4', '8.0']
+        database: ['mariadb', 'pgsql']
         moodlebranch: ['MOODLE_400_STABLE', 'master']
         include:
           - node: 16.16
